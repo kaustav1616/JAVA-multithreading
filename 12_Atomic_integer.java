@@ -1,11 +1,33 @@
+/* demonstrates use of atomic variables in synchronization (in a format similar to previous
+ * demonstrations of synchronization with other methods) w/o use of synchronization blocks / locks
+ * (check difference in synchronization with and w/o atomic integer)
+ */
+
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class Atomic_integer 
+class Atomic_integer 
 {
     private AtomicInteger counter = new AtomicInteger(0);
-    
-    public void increment() // no need for synchronized method / block
+
+    /* uncomment this block to see effect w/o using atomic integer
+    private int counter;
+
+    AtomicInteger()
     {
+        counter = 0;
+    }
+
+    public void increment() 
+    {
+        // no need for synchronized block / lock; only one thread can read / write on the variable at any given time
+        ++counter;
+    }
+     */
+    
+    // comment this increment() mnethod to see effect w/o using atomic integer
+    public void increment() 
+    {
+        // no need for synchronized block / lock; only one thread can read / write on the variable at any given time
         counter.getAndIncrement();
     }
 

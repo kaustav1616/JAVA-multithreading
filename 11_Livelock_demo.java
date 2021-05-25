@@ -58,8 +58,7 @@ class DoWork2
             }
             else
             {
-                lock1.unlock();
-                System.out.println("Released lock2 for work1.");
+                System.out.println("Uanble to get lock2 for work1.");
                 continue;
             }
 
@@ -93,8 +92,7 @@ class DoWork2
             }
             else
             {
-                lock2.unlock();
-                System.out.println("Released lock2 for work2.");
+                System.out.println("Uanble to get lock1 for work2.");
                 continue;
             }
 

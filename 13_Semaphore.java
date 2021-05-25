@@ -1,17 +1,17 @@
-import java.util.concurrent.*;
+import java.util.concurrent.Semaphore;
 
-class DownloadData 
+class Downloader
 {
-    Semaphore semaphore = new Semaphore(3, true);
+    private Semaphore semaphore = new Semaphore(3, true);
 
-    public void downloadData() 
+    public void downloadData()
     {
-        try 
+        try
         {
             semaphore.acquire();
             download();
-        } 
-        catch (InterruptedException e) 
+        }
+        catch(InterruptedException e)
         {
             e.printStackTrace();
         }
@@ -21,26 +21,26 @@ class DownloadData
         }
     }
 
-    private void download() 
+    private void download()
     {
-        System.out.println("Downloading data..");
-
-        try 
+        try
         {
-            Thread.sleep(2000);
-        } 
-        catch (InterruptedException e) 
+            Thread.sleep(1000);
+        }
+        catch(InterruptedException e)
         {
             e.printStackTrace();
         }
-	}
+        
+        System.out.println("Thread " + Thread.currentThread().getName() + " has finished downloading.");
+    }
 }
 
-public class SemaphoreTest
+class SemaphoreTest
 {
     public static void main(String[] args) 
     {
-        DownloadData downloadData = new DownloadData();
+        Downloader downloader = new Downloader();
         
         for(int i = 0; i < 12; ++i)
         {
@@ -49,7 +49,7 @@ public class SemaphoreTest
                 @Override
                 public void run()
                 {
-                    downloadData.downloadData();
+                    downloader.downloadData();
                 }    
             });
 
