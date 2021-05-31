@@ -1,9 +1,12 @@
 /* wait(): thread releases lock and goes into waiting state
  * notify(): thread releases lock and notifies a thread waiting ON THE SAME LOCK
  * that it can once again acquire the lock
+ * In this demo, t1 starts and then goes into the waiting state, the t2 starts and then goes into the waiting state
+ * and then t3 starts and before completing execution, wakes up the first waiting thread in the queue (t1), which
+ * executes and just before completion, wakes up the first waiting thread in the queue (t2), and finally t2 completes execution
  */
 
- public class Wait_notify 
+class Wait_notify 
 {
     public void f1() throws InterruptedException
     {

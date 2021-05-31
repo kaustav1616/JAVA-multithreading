@@ -41,5 +41,7 @@ class TestSingleThreadExecutor
         
         for(int i = 0; i < 5; ++i)
             executor.execute(new Task(i + 1));
+
+            executor.shutdown();
     }
 }

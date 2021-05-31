@@ -8,8 +8,14 @@ import java.util.concurrent.locks.ReentrantLock;
 
 class Locks 
 {
-    private int counter = 0;
-    private Lock lock = new ReentrantLock(true); // true / false for guarantee of fairness
+    private int counter;
+    private Lock lock;
+
+    Locks()
+    {
+        counter = 0;
+        lock = new ReentrantLock(); // true / false for guarantee of fairness
+    }
     
     private void increment()
     {
@@ -21,8 +27,13 @@ class Locks
         }
         finally
         {
-            lock.unlock();
+            unlock();
         }
+    }
+
+    private void unlock()
+    {
+        lock.unlock();
     }
 
     public int process()

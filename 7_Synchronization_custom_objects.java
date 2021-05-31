@@ -50,7 +50,7 @@ class Synchronization_custom_objects
             public void run()
             {
                 for(int i = 0; i <= 99; ++i)
-                    increment1();
+                    increment2();
             }
         });
     
@@ -60,7 +60,7 @@ class Synchronization_custom_objects
             public void run()
             {
                 for(int i = 0; i <= 99; ++i)
-                    increment2();
+                    increment1();
             }
         });
 
